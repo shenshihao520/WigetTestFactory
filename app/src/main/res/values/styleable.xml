@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SpinerButton">
+        <attr name="background_color" format="reference|integer" />
+        <attr name="right_image_visible" format="boolean" />
+        <attr name="value_text" format="string" />
+        <attr name="value_text_title" format="string" />
+        <attr name="value_text_size" format="dimension" />
+        <attr name="value_text_color" format="color" />
+        <attr name="right_image_drawable" format="reference|integer" />
+        <attr name="spiner_window_layout" format="reference|integer" />
+        <attr name="spiner_item_layout" format="reference|integer" />
+        <attr name="spiner_button_layout" format="reference|integer" />
+    </declare-styleable>
+</resources>

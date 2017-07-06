@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:shen="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/xf_third_light_gray"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/xf_third_white"
+        android:orientation="vertical"
+        android:padding="24.7dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <View
+                android:id="@+id/view1"
+                android:layout_width="4dp"
+                android:layout_height="24dp"
+                android:background="@color/xf_third_light_blue" />
+
+            <TextView
+                style="@style/XF_Third_MainText_blue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18.7dp"
+                android:text="@string/search_condition" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/XF_Third_LineSpacing_BasicForm"
+            android:layout_width="match_parent"
+            android:layout_height="53.3dp">
+
+            <RelativeLayout
+                style="@style/XF_Third_BubleBackground"
+                android:layout_width="0dp"
+                android:layout_marginRight="14dp"
+                android:layout_weight="1"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+
+                >
+
+                <TextView
+                    android:id="@+id/insurance_policy_num_Title"
+                    style="@style/XF_Third_MainText_Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:text="@string/insurance_policy_num" />
+
+                <EditText
+                    android:id="@+id/insurance_policy_num"
+                    android:layout_width="match_parent"
+                    android:layout_height="53.3dp"
+                    android:layout_toRightOf="@+id/insurance_policy_num_Title"
+                    android:background="@null"
+                    android:textColor="#000000"
+                    android:singleLine="true"
+                    android:textSize="18.7sp" />
+
+            </RelativeLayout>
+            <RelativeLayout
+                style="@style/XF_Third_BubleBackground"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+
+                >
+
+                <TextView
+                    android:id="@+id/ipolicy_holder_name_Title"
+                    style="@style/XF_Third_MainText_Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:text="@string/ipolicy_holder_name" />
+
+                <EditText
+                    android:id="@+id/ipolicy_holder_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="53.3dp"
+                    android:layout_toRightOf="@+id/ipolicy_holder_name_Title"
+                    android:background="@null"
+                    android:textColor="#000000"
+                    android:singleLine="true"
+                    android:textSize="18.7sp" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/XF_Third_LineSpacing_BasicForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <widget.SpinerButton
+                android:id="@+id/ipolicy_status"
+                style="@style/XF_Third_BubleBackground"
+                android:layout_width="0dp"
+                android:layout_marginRight="14dp"
+                android:layout_weight="1"
+                shen:spiner_button_layout="@layout/spiner_button_layout"
+                shen:spiner_item_layout="@layout/spiner_item_layout"
+                shen:spiner_window_layout="@layout/spiner_window_layout"
+                shen:value_text_color="@color/xf_third_light_black"
+                shen:value_text_title="@string/ipolicy_status" />
+
+            <widget.SpinerButton
+                android:id="@+id/ipolicy_receipt_status"
+                style="@style/XF_Third_BubleBackground"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                shen:spiner_button_layout="@layout/spiner_button_layout"
+                shen:value_text_color="@color/xf_third_light_black"
+                shen:value_text_title="@string/receipt_status" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/XF_Third_LineSpacing_BasicForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/rl_ipolicy_apply_date_from"
+                style="@style/XF_Third_BubleBackground"
+                android:layout_width="0dp"
+                android:layout_marginRight="25.3dp"
+                android:layout_weight="1"
+                android:paddingLeft="16dp">
+
+                <TextView
+                    android:id="@+id/ipolicy_apply_date_from_Title"
+                    style="@style/XF_Third_MainText_Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/ipolicy_apply_date" />
+
+                <TextView
+                    android:id="@+id/ipolicy_apply_date_from"
+                    style="@style/XF_Third_MainText_Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="24dp"
+                    android:background="@drawable/xfthirddate" />
+            </RelativeLayout>
+
+            <TextView
+                style="@style/XF_Third_MainText_Bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/zhi" />
+
+            <RelativeLayout
+                android:id="@+id/rl_ipolicy_apply_date_end"
+                style="@style/XF_Third_BubleBackground"
+                android:layout_width="0dp"
+                android:layout_marginLeft="25.3dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:paddingLeft="16dp">
+
+                <TextView
+                    android:id="@+id/ipolicy_apply_date_end_Title"
+                    style="@style/XF_Third_MainText_Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true" />
+
+                <TextView
+                    android:id="@+id/ipolicy_apply_date_end"
+                    style="@style/XF_Third_MainText_Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="24dp"
+                    android:background="@drawable/xfthirddate" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/XF_Third_LineSpacing_BasicForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/rl_ipolicy_effect_date_from"
+                style="@style/XF_Third_BubleBackground"
+                android:layout_width="0dp"
+                android:layout_marginRight="25.3dp"
+                android:layout_weight="1"
+                android:paddingLeft="16dp">
+
+                <TextView
+                    android:id="@+id/ipolicy_effect_date_from_Title"
+                    style="@style/XF_Third_MainText_Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/ipolicy_effect_date" />
+
+                <TextView
+                    android:id="@+id/ipolicy_effect_date_from"
+                    style="@style/XF_Third_MainText_Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="24dp"
+                    android:background="@drawable/xfthirddate" />
+            </RelativeLayout>
+
+            <TextView
+                style="@style/XF_Third_MainText_Bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/zhi" />
+
+            <RelativeLayout
+                android:id="@+id/rl_ipolicy_effect_date_end"
+                style="@style/XF_Third_BubleBackground"
+                android:layout_width="0dp"
+                android:layout_marginLeft="25.3dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:paddingLeft="16dp">
+
+                <TextView
+                    android:id="@+id/ipolicy_effect_date_end_Title"
+                    style="@style/XF_Third_MainText_Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true" />
+
+                <TextView
+                    android:id="@+id/ipolicy_effect_date_end"
+                    style="@style/XF_Third_MainText_Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="24dp"
+                    android:background="@drawable/xfthirddate" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/XF_Third_LineSpacing_BasicForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/rl_ipolicy_receipt_date_from"
+                style="@style/XF_Third_BubleBackground"
+                android:layout_width="0dp"
+                android:layout_marginRight="25.3dp"
+                android:layout_weight="1"
+                android:paddingLeft="16dp">
+
+                <TextView
+                    android:id="@+id/ipolicy_receipt_date_from_Title"
+                    style="@style/XF_Third_MainText_Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/ipolicy_receipt_date" />
+
+                <TextView
+                    android:id="@+id/ipolicy_receipt_date_from"
+                    style="@style/XF_Third_MainText_Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="24dp"
+                    android:background="@drawable/xfthirddate" />
+            </RelativeLayout>
+
+            <TextView
+                style="@style/XF_Third_MainText_Bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/zhi" />
+
+            <RelativeLayout
+                android:id="@+id/rl_ipolicy_receipt_date_end"
+                style="@style/XF_Third_BubleBackground"
+                android:layout_width="0dp"
+                android:layout_marginLeft="25.3dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:paddingLeft="16dp">
+
+                <TextView
+                    android:id="@+id/ipolicy_receipt_date_end_Title"
+                    style="@style/XF_Third_MainText_Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true" />
+
+                <TextView
+                    android:id="@+id/ipolicy_receipt_date_end"
+                    style="@style/XF_Third_MainText_Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="24dp"
+                    android:background="@drawable/xfthirddate" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <TextView
+            style="@style/XF_Third_MainText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/search_warning" />
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ExpandableListView
+            android:id="@+id/expandablelv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:dividerHeight="100dp">
+
+        </ExpandableListView>
+    </LinearLayout>
+</LinearLayout>

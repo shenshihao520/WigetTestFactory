@@ -11,6 +11,7 @@ import android.view.View;
 import com.example.shenshihao520.wigettestfactory.R;
 
 /**
+ * 自定义控件教学事例
  * Created by shenshihao520 on 2017/7/6.
  */
 

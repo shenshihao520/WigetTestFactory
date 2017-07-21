@@ -26,7 +26,7 @@ import java.util.List;
  * Created by shenshihao520 on 2017/6/17.
  */
 
-public class XFThirdInsuranceSearchActivity extends Activity  {
+public class ExpandableListViewActivity extends Activity  {
 
     private List<String> nameList = new ArrayList<String>();
     SpinerButton ipolicy_status;

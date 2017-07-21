@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="777"/>
+    <!--<com.example.shenshihao520.wigettestfactory.widget.customView.TestCustomViewGroup-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+        <!--<Button-->
+            <!--android:layout_width="50dp"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:text="123"/>-->
+        <!--<Button-->
+            <!--android:layout_width="50dp"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:text="456"/>-->
+        <!--<Button-->
+            <!--android:layout_width="50dp"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:text="456"/>-->
+        <!--<Button-->
+            <!--android:layout_width="70dp"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:text="45612312"/>-->
+
+    <!--</com.example.shenshihao520.wigettestfactory.widget.customView.TestCustomViewGroup>-->
+
+
+        <com.example.shenshihao520.wigettestfactory.widget.customView.DrawTaiJiView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:layout_marginLeft="10dp"
+            />
+
+</LinearLayout>

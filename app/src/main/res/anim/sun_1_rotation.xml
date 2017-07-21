@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:ordering="together">
+    <objectAnimator
+        android:duration="17500"
+        android:interpolator="@android:anim/linear_interpolator"
+        android:propertyName="rotation"
+        android:repeatCount="infinite"
+        android:valueFrom="0"
+        android:valueTo="360" />
+    <!--<objectAnimator android:interpolator="@android:anim/decelerate_interpolator" android:duration="900" android:startOffset="430" android:repeatCount="infinite" android:repeatMode="reverse" android:valueFrom="1.0" android:valueTo="1.15" android:propertyName="scaleX" />-->
+    <!--<objectAnimator android:interpolator="@android:anim/decelerate_interpolator" android:duration="900" android:startOffset="430" android:repeatCount="infinite" android:repeatMode="reverse" android:valueFrom="1.0" android:valueTo="1.15" android:propertyName="scaleY" />-->
+</set>

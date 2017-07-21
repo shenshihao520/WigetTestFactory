@@ -1,5 +1,7 @@
 package com.example.shenshihao520.wigettestfactory.widget.customView;
 
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorSet;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -10,8 +12,12 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.RotateAnimation;
+
+import com.example.shenshihao520.wigettestfactory.R;
 
 /**
+ * 自定义View  画太极
  * Created by shenshihao520 on 2017/7/19.
  */
 
@@ -19,22 +25,28 @@ public class DrawTaiJiView extends View {
     private Paint mPaint;
     private int mWidth;
     private int mHeight;
-
+    private Context mContext;
 
     //创建两个绘画路径
     private Path path0 = new Path();
     private Path path1 = new Path();
 
     public DrawTaiJiView(Context context) {
+
         super(context);
+        mContext = context;
     }
 
     public DrawTaiJiView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        mContext = context;
+
     }
 
     public DrawTaiJiView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        mContext = context;
+
     }
 
     private void init() {
@@ -71,6 +83,7 @@ public class DrawTaiJiView extends View {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
 
+        //这里可以应用三种测量模式
         // 获取宽-测量规则的模式和大小
         int widthMode = MeasureSpec.getMode(widthMeasureSpec);
         int widthSize = MeasureSpec.getSize(widthMeasureSpec);
@@ -145,10 +158,10 @@ public class DrawTaiJiView extends View {
 
         canvas.drawPath(path1, mPaint);
 
-
-
+        rotate();
 
     }
+
 
     void drawOld(Canvas canvas) {
         //画黄方块
@@ -195,5 +208,11 @@ public class DrawTaiJiView extends View {
         path1.op(path0, Path.Op.UNION);
 
         canvas.drawPath(path1, mPaint);//这一段注意，之后要删除
+    }
+    public void rotate()
+    {
+        AnimatorSet set2 = (AnimatorSet) AnimatorInflater.loadAnimator(mContext, R.anim.sun_1_rotation);
+        set2.setTarget(this);
+        set2.start();
     }
 }

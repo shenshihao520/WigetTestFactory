@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 轮播图和轮播文字
  * Created by shenshihao520 on 2017/7/17.
  */
 

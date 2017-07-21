@@ -11,6 +11,7 @@ import com.example.shenshihao520.wigettestfactory.R;
 import com.example.shenshihao520.wigettestfactory.widget.test.TestDispatchEvent;
 
 /**
+ * 事件分发测试Activity
  * Created by shenshihao520 on 2017/7/19.
  */
 

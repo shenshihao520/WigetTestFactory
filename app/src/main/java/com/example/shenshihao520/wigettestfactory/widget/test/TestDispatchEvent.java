@@ -8,6 +8,7 @@ import android.view.MotionEvent;
 import android.widget.TextView;
 
 /**
+ * 事件分发测试控件
  * Created by shenshihao520 on 2017/7/19.
  */
 

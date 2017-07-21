@@ -23,6 +23,8 @@ import java.util.List;
 
 
 /**
+ * 可扩展的ListView
+ *
  * Created by shenshihao520 on 2017/6/17.
  */
 

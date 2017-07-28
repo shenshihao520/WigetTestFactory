@@ -10,6 +10,7 @@ import android.graphics.Path;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.RotateAnimation;
@@ -60,6 +61,18 @@ public class DrawTaiJiView extends View {
         mPaint.setStrokeWidth(5f);     //设置画笔宽度为10px
         mPaint.setAntiAlias(true);     //设置抗锯齿
         mPaint.setAlpha(255);        //设置画笔透明度
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        switch (event.getAction())
+        {
+            case MotionEvent.ACTION_DOWN:
+
+                break;
+        }
+        return super.onTouchEvent(event);
+
     }
 
     /**

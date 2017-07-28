@@ -1,0 +1,330 @@
+<resources>
+
+    <!--
+         Example customization of dimensions originally defined in res/values/dimens.xml
+         (such as screen margins) for screens with more than 820dp of available width. This
+         would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively).
+
+
+
+
+    -->
+    <dimen name="activity_horizontal_margin">64dp</dimen>
+
+    <!-- 登录 -->
+    <dimen name="login_icon_username_wh">30dp</dimen>
+    <dimen name="login_middle_margin">50dp</dimen>
+    <dimen name="login_icon_logo_wh">110dp</dimen>
+    <dimen name="login_password_margin">20dp</dimen>
+    <dimen name="login_edt_margin">10dp</dimen>
+    <dimen name="login_btn_height">50dp</dimen>
+    <dimen name="login_btn_margin">30dp</dimen>
+    <dimen name="login_cooperation_btn_wh">55dp</dimen>
+    <dimen name="login_cooperation_btn_margin">35dp</dimen>
+    <dimen name="login_eye_w">20dp</dimen>
+    <dimen name="login_eye_h">15dp</dimen>
+    <dimen name="login_eye_margin">-30dp</dimen>
+    <dimen name="login_cooperation_textview_padding">50dp</dimen>
+    <dimen name="login_cooperation_line_width">80dp</dimen>
+    <dimen name="login_icon_forget_wh">12dp</dimen>
+    <dimen name="login_forget_textsize">13sp</dimen>
+    <dimen name="login_forget_marginleft">10dp</dimen>
+    <dimen name="login_zhucebangding_m">10.0dp</dimen>
+    <dimen name="login_zhucebangding_size">14.0sp</dimen>
+    <!-- 主界面 -->
+    <dimen name="main_foot_icon_wh">20dp</dimen>
+    <dimen name="head_h">50dp</dimen>
+    <dimen name="head_margin">10dp</dimen>
+    <dimen name="head_back_wh">30dp</dimen>
+    <dimen name="head_title_e_textsize">23sp</dimen>
+    <dimen name="head_title_textsize">14sp</dimen>
+    <dimen name="head_title_margin">25dp</dimen>
+    <dimen name="foot_textsize">12sp</dimen>
+    <dimen name="normal_textsize">14sp</dimen>
+
+    <!-- 个人信息 -->
+    <dimen name="personinfo_halfside_margin">8dp</dimen>
+    <dimen name="personinfo_photo_line_h">150dp</dimen>
+    <dimen name="personinfo_photo_h">70dp</dimen>
+    <dimen name="personinfo_photo_w">90dp</dimen>
+    <dimen name="personinfo_info_line_h">200dp</dimen>
+    <dimen name="personinfo_info_side_margin">30dp</dimen>
+    <dimen name="personinfo_word_side_margin">10dp</dimen>
+    <dimen name="personinfo_stamp_wh">120dp</dimen>
+    <dimen name="personinfo_stamp_mar_top">50dp</dimen>
+    <dimen name="personinfo_stamp_mar_left">220dp</dimen>
+    <dimen name="personinfo_hand_textsize">15sp</dimen>
+    <dimen name="personinfo_hand_margin">6dp</dimen>
+    <dimen name="personinfo_zoom_margin">30dp</dimen>
+    <dimen name="personinfo_mid_h">40dp</dimen>
+    <dimen name="personinfo_hand_w">33dp</dimen>
+    <dimen name="personinfo_hand_h">26dp</dimen>
+    <dimen name="personinfo_zoom_wh">35dp</dimen>
+    <dimen name="personinfo_foot_margin">8dp</dimen>
+    <dimen name="personinfo_foot_textsize1">16sp</dimen>
+    <dimen name="personinfo_foot_textsize2">13sp</dimen>
+    <dimen name="personinfo_foot_logowh">60dp</dimen>
+
+    <!-- 扫描、OCR、录屏 -->
+    <dimen name="recordevideo_scrollview">200dp</dimen>
+    <dimen name="facerecognise">180dp</dimen>
+    <dimen name="recognise_layout1">195dp</dimen>
+    <dimen name="recognise_layout2">180dp</dimen>
+    <dimen name="recognise_layout3">165dp</dimen>
+    <dimen name="weight">0dp</dimen>
+    <dimen name="recognise_relativelayout_w">305dp</dimen>
+    <dimen name="recognise_relativelayout_h">130dp</dimen>
+    <dimen name="recognise_linearlayout_w">305dp</dimen>
+    <dimen name="recognise_linearlayout_h">120dp</dimen>
+    <dimen name="recognise_relativelayout1_w">300dp</dimen>
+    <dimen name="recognise_relativelayout1_h">70dp</dimen>
+    <dimen name="recognise_relativelayout1_ml">10dp</dimen>
+    <dimen name="recognise_relativelayout1_mt">-10dp</dimen>
+    <dimen name="recognise_relativelayout1_mt1">-20dp</dimen>
+    <dimen name="recognise_relativelayout_ml">8dp</dimen>
+    <dimen name="recognise_textview_m">10dp</dimen>
+    <dimen name="recognise_textsize">13sp</dimen>
+    <dimen name="recognise_textsize_tishi1">13sp</dimen>
+    <dimen name="recognise_textsize_tishi2">10sp</dimen>
+    <dimen name="recognise_textsize_tishi3">10dp</dimen>
+    <dimen name="recognise_imageview">105dp</dimen>
+    <dimen name="recognise_imageview_h">80.0dp</dimen>
+    <dimen name="recognise_imageview_ml">18dp</dimen>
+    <dimen name="recognise_imageview_mt">20dp</dimen>
+    <dimen name="recognise_imageview_tishi">15dp</dimen>
+    <dimen name="recognise_imageview_tishi_mt">25dp</dimen>
+    <dimen name="recognise_imageview_tishi_ml">15dp</dimen>
+    <dimen name="recognise_tv_tishi_size">12.0sp</dimen>
+    <dimen name="recognise_iv_dlt_paizhao">90.0dp</dimen>
+    <dimen name="recognise_iv_dlt_paizhao_h">80.0dp</dimen>
+    <dimen name="recognise_iv_dlt_paizhao_mt">10.0dp</dimen>
+    <dimen name="recognise_iv_dlt_paizhao_ml">22.0dp</dimen>
+    <dimen name="recognise_textview_tishi1_mt">25dp</dimen>
+    <dimen name="recognise_textview_tishi1_ml">35dp</dimen>
+    <dimen name="recognise_textview_tishi2_mt">30dp</dimen>
+    <dimen name="recognise_textview_tishi2_ml">100dp</dimen>
+    <dimen name="recognise_textview_tishi3_mt">45dp</dimen>
+    <dimen name="recognise_textview_tishi3_ml">15dp</dimen>
+    <dimen name="recognise_tiaoguo_w">60dp</dimen>
+    <dimen name="recognise_tiaoguo_m">8dp</dimen>
+    <dimen name="recognise_tiaoguo_h">28dp</dimen>
+    <dimen name="recognise_saomiao_ml">145dp</dimen>
+    <dimen name="recognise_paizhao_mt">5dp</dimen>
+    <dimen name="recognise_saomiao_mt">35dp</dimen>
+    <dimen name="recognise_fram_mt">8dp</dimen>
+    <dimen name="recognise_tiaoguo_ml">250dp</dimen>
+    <dimen name="recognise_tiaoguo_mt">90dp</dimen>
+    <dimen name="recognise_tiaoguo_mr">15dp</dimen>
+    <dimen name="recognise_spinner_h">30.0dp</dimen>
+    <dimen name="recognise_spinner_w">130.0dp</dimen>
+    <dimen name="recognise_spinner_ml">20.0dp</dimen>
+    <dimen name="recognise_spinner_mt">15.0dp</dimen>
+    <dimen name="recognise_tv_dailiren_mt">10.0dp</dimen>
+    <dimen name="recognise_tv_dailiren_ml">20.0dp</dimen>
+    <dimen name="recognise_linear_h">100.0dp</dimen>
+    <dimen name="recognise_linear_mt">8.0dp</dimen>
+    <dimen name="recognise_linear_ml">20.0dp</dimen>
+    <dimen name="recognise_iv_dlt_luxiang_mt">10.0dp</dimen>
+    <dimen name="recognise_iv_dlt_luxiang_ml">20.0dp</dimen>
+    <dimen name="recognise_tv_tishi_w">200.0dp</dimen>
+    <dimen name="recognise_tv_tishi_h">130.0dp</dimen>
+    <dimen name="recognise_tv_tishi_mt">2.0dp</dimen>
+    <dimen name="recognise_tv_tishi_ml">4.0dp</dimen>
+    <dimen name="recognise_contentmargintop">5dp</dimen>
+    <dimen name="recognise_spinnerwidth">130dp</dimen>
+    <dimen name="recognise_spinnerheight">30dp</dimen>
+    <dimen name="recognise_spinner_btn_height">7dp</dimen>
+    <dimen name="recognise_spinner_btn_width">18dp</dimen>
+    <dimen name="recognise_spinner_et_size">10dp</dimen>
+    <dimen name="recognise_spinnermargintop">14dp</dimen>
+    <dimen name="recognise_numtext_marginleft">30dp</dimen>
+    <dimen name="recognise_numtext_textsize">14sp</dimen>
+    <dimen name="recognise_dier_add_margin">20.0dp</dimen>
+    <dimen name="recognise_ll_step1">120.0dp</dimen>
+    <!-- 录屏 -->
+    <dimen name="framelayout_tishi">10dp</dimen>
+    <dimen name="framelayout_button_w">50dp</dimen>
+    <dimen name="framelayout_button_h">50dp</dimen>
+    <dimen name="framelayout_button_mb">10dp</dimen>
+    <dimen name="framelayout_textview_mb">25dp</dimen>
+    <dimen name="framelayout_textsize">20sp</dimen>
+    <dimen name="framelayout_textsize_time">16sp</dimen>
+    <dimen name="linearlayout_h">250dp</dimen>
+    <dimen name="linearlayout_m">5dp</dimen>
+    <dimen name="linearlayout_textview_w">25dp</dimen>
+    <dimen name="linearlayout_textview_h">26dp</dimen>
+    <dimen name="linearlayout_textview_mt">3dp</dimen>
+    <dimen name="linearlayout_text_mt">5dp</dimen>
+    <dimen name="linearlayout_textview_ml">5dp</dimen>
+    <dimen name="linearlayout_textview_mr">5dp</dimen>
+    <dimen name="linearlayout_button_w">100dp</dimen>
+    <dimen name="linearlayout_button_h">40dp</dimen>
+    <dimen name="linearlayout_button_ml">105dp</dimen>
+
+    <!-- 查看列表 -->
+    <dimen name="textsize_tishi">23dp</dimen>
+    <dimen name="head_upload_w">70dp</dimen>
+    <dimen name="head_upload_h">25dp</dimen>
+    <dimen name="head_upload_textsize">14sp</dimen>
+    <dimen name="watch_prtnum_margin">5dp</dimen>
+    <dimen name="watch_ext_btn_wh">30dp</dimen>
+    <dimen name="watch_item_dropdown_wh">12dp</dimen>
+    <dimen name="watch_ext_btn_margin">10dp</dimen>
+    <dimen name="watch_select_wh">25dp</dimen>
+    <dimen name="watch_upload_wh">25dp</dimen>
+    <dimen name="watch_item_divider">15dp</dimen>
+    <dimen name="watch_item_tv_upload">12sp</dimen>
+    <dimen name="watch_item_tv_w">50dp</dimen>
+    <dimen name="watch_item_tv_percentage_w">40dp</dimen>
+    <dimen name="watch_item_tv_percentage">10sp</dimen>
+    <dimen name="watch_item_tv_margin">5dp</dimen>
+    <dimen name="watch_item_bar_w">180dp</dimen>
+    <dimen name="watch_item_bar_h">5dp</dimen>
+    <dimen name="watch_head_h">50dp</dimen>
+    <dimen name="watch_head_btn_h">48dp</dimen>
+    <dimen name="watch_head_line_h">2dp</dimen>
+    <dimen name="watch_item_detail_w">60dp</dimen>
+    <dimen name="watch_item_detail_h">25dp</dimen>
+    <dimen name="watch_item_uploaded_h">45dp</dimen>
+
+    <!-- info 界面 -->
+
+
+    <!-- 视频信息页面 -->
+
+    <dimen name="infor_title_height">50dp</dimen>
+    <dimen name="infor_layout_margin">8dp</dimen>
+    <dimen name="infor_layout_margintop">5dp</dimen>
+    <dimen name="infor_wordlayout_height">250dp</dimen>
+    <dimen name="infor_wordlayout_title_height">25dp</dimen>
+    <dimen name="infor_wordlayout_title_margintop">5dp</dimen>
+    <dimen name="infor_wordlayout_title_marginleft">5dp</dimen>
+    <dimen name="infor_wordlayout_content_height">30dp</dimen>
+    <dimen name="infor_wordlayout_content_image_width">30dp</dimen>
+    <dimen name="infor_wordlayout_content_marginleft">15dp</dimen>
+    <dimen name="infor_wordlayout_textview_content_marginleft">10dp</dimen>
+    <dimen name="infor_wordlayout_textview_first_marginleft">5dp</dimen>
+    <dimen name="infor_wordlayout_textview_first_whidth">100dp</dimen>
+    <dimen name="infor_verifylayout_height">95dp</dimen>
+    <dimen name="infor_verifylayout_content_center">-60dp</dimen>
+    <dimen name="infor_verifylayout_content_height">50dp</dimen>
+    <dimen name="infor_verifylayout_content_margintop">5dp</dimen>
+    <dimen name="infor_verifylayout_button_width">100dp</dimen>
+    <dimen name="infor_verifylayout_button_height">30dp</dimen>
+    <dimen name="infor_verifylayout_button_margintop">15dp</dimen>
+    <dimen name="infor_verifylayout_button_marginleft">10dp</dimen>
+    <dimen name="infor_videolayout_height">350dp</dimen>
+    <dimen name="infor_layout_title_word_size">18sp</dimen>
+    <dimen name="infor_passimage_width">80dp</dimen>
+    <dimen name="infot_passimage_margintop">-80dp</dimen>
+    <dimen name="infot_passimage_marginleft">230dp</dimen>
+    <dimen name="infor_checkfile_button_height">25dp</dimen>
+    <dimen name="infor_checkfile_button_whith">80dp</dimen>
+    <dimen name="infor_checkfile_button_marginleft">120dp</dimen>
+    <dimen name="infor_checkfile_button_text_size">12sp</dimen>
+    <dimen name="infor_check_button_layout_height">35dp</dimen>
+
+    <!-- 查看要件界面 -->
+    <dimen name="look_photo_padding">2dp</dimen>
+    <dimen name="look_photo_gridview_height">500dp</dimen>
+    <dimen name="look_photo_width">100dp</dimen>
+    <dimen name="look_photo_height">100dp</dimen>
+    <dimen name="look_photo_margin">2dp</dimen>
+    <dimen name="look_photo_marginBottom">20dp</dimen>
+    <dimen name="look_photo_margin10">10dp</dimen>
+    <dimen name="look_photo_button_width">400dp</dimen>
+    <dimen name="look_photo_button_height">35dp</dimen>
+    <dimen name="look_photo_margin40">40dp</dimen>
+    <dimen name="look_photo_fontsize">14sp</dimen>
+    <dimen name="look_photo_margin15">15dp</dimen>
+    <dimen name="look_photo_margin25">25dp</dimen>
+    <dimen name="look_photo_margin30">30dp</dimen>
+    <dimen name="look_photo_margin50">50dp</dimen>
+    <dimen name="look_photo_margin80">80dp</dimen>
+    <dimen name="loading_text_size">25sp</dimen>
+
+    <!-- 注册绑定页面 -->
+    <dimen name="regist_text_size">18.0sp</dimen>
+    <dimen name="regist_button_size">12.0sp</dimen>
+    <dimen name="regist_button_saomiao">40.0sp</dimen>
+    <dimen name="regist_button_h">28.0dp</dimen>
+    <dimen name="regist_button_w">240.0dp</dimen>
+    <dimen name="regist_linear_mr">40.0dp</dimen>
+    <dimen name="regist_linear_pl">40.0dp</dimen>
+    <dimen name="regist_linear_pt">30.0dp</dimen>
+    <dimen name="regist_tv_height">35.0dp</dimen>
+    <dimen name="regist_yz_width">100.0dp</dimen>
+    <dimen name="regist_sp_width">160.0dp</dimen>
+    <dimen name="regist_et_width">120.0dp</dimen>
+    <dimen name="regist_bt_width">40.0dp</dimen>
+    <dimen name="regist_bt_mt">40.0dp</dimen>
+    <dimen name="regist_bt1_width">60.0dp</dimen>
+    <dimen name="regist_sp_ml">20.0dp</dimen>
+    <dimen name="regist_tv_ml">60.0dp</dimen>
+    <dimen name="regist_tv_mt">4.0dp</dimen>
+    <dimen name="regist_tv_mt1">20.0dp</dimen>
+    <dimen name="regist_edt_ml">18.0dp</dimen>
+    <dimen name="regist_edt_w">110.0dp</dimen>
+
+    <!-- 我 -->
+    <dimen name="photo_margin">7.0dp</dimen>
+    <dimen name="left_right_margin">20.0dp</dimen>
+    <dimen name="top_10dp_margin">10.0dp</dimen>
+
+    <dimen name="bar_width">100.0dp</dimen>
+    <dimen name="bar_h">5.0dp</dimen>
+    <dimen name="main_padding">15.0dp</dimen>
+    <dimen name="mine_info_font_size">14sp</dimen>
+    <dimen name="mine_info_font_size_big">16sp</dimen>
+
+    <dimen name="mine_info_block1">70dp</dimen>
+    <dimen name="mine_info_block1_maginleft">7dp</dimen>
+    <dimen name="mine_info_block1_font_size_b">30sp</dimen>
+    <dimen name="mine_top20dp">20sp</dimen>
+    <!--编辑个人信息-->
+    <dimen name="head_image_w">70.0dp</dimen>
+    <dimen name="head_image_w_big">130.0dp</dimen>
+
+    <dimen name="head_image_magin_left">20.0dp</dimen>
+    <dimen name="line_margin">7.0dp</dimen>
+    <dimen name="head_margin_top">7.0dp</dimen>
+    <dimen name="head_margin_top_big">40.0dp</dimen>
+    <dimen name="btn_padding_right">25.0dp</dimen>
+    <dimen name="btn_padding_right_small">10.0dp</dimen>
+
+    <dimen name="line_margin_bottom">7.0dp</dimen>
+    <dimen name="btn_save_w">40.0dp</dimen>
+    <dimen name="et_h">30.0dp</dimen>
+    <dimen name="et_w">200.0dp</dimen>
+    <dimen name="line_margin_right">20.0dp</dimen>
+    <dimen name="skip_margin_right">45.0dp</dimen>
+    <dimen name="line_h">40.0dp</dimen>
+
+    <dimen name="arrow_h">30.0dp</dimen>
+    <dimen name="arrow_w">10.0dp</dimen>
+
+    <dimen name="btn_date_wh">20dp</dimen>
+    <dimen name="et_date_w">150.0dp</dimen>
+
+    <!--解绑手机号-->
+    <dimen name="unbind_tip_h">40.0dp</dimen>
+    <dimen name="unbind_tel_input_margin">20.0dp</dimen>
+    <dimen name="unbind_tel_input_front_text_size">20.0sp</dimen>
+
+    <!--修改密码-->
+    <dimen name="change_pass_margin">20.0dp</dimen>
+    <dimen name="change_pass_text_size">20.0sp</dimen>
+
+    <!-- 消息 -->
+    <dimen name="message_padding">20dp</dimen>
+    <dimen name="message_time_padding">5dp</dimen>
+    <dimen name="message_body_padding">7dp</dimen>
+    <dimen name="message_img_wh">50dp</dimen>
+    <dimen name="message_margintop">15dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!--滑动按钮-->
+    <dimen name="switch_25dp">22dp</dimen>
+    <dimen name="switch_20dp">20dp</dimen>
+    <dimen name="switch_10dp">10dp</dimen>
+</resources>

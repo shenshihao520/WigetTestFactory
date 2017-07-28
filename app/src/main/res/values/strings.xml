@@ -132,4 +132,14 @@
     <string name="insurancePeriod2">保险期限</string>
     <string name="payPeriod">缴费期限</string>
     <string name="payWay">缴费方式</string>
+
+
+
+    <string name="dlt_tishi">保单号：</string>
+    <string name="dlt_tishi1">温馨提示：</string>
+    <string name="dlt_tishi2">如果当前无可扫描的投保单条形码可点击跳转按钮直</string>
+    <string name="dlt_tishi3">接进行下一步录像完成后可于任务列表页面补充扫描。</string>
+    <string name="dlt_tishi4">中科软科技股份有限公司</string>
+    <string name="dlt_tishi5">缓存建议网络不好时开启</string>
+    <string name="dlt_tishi6">采集中</string>
 </resources>

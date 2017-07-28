@@ -15,4 +15,11 @@
     <color name="xf_third_black">#000000</color>
     <color name="xf_third_light_blue">#1b83e7</color>
     <color name="xf_third_orange">#fc9922</color>
+
+    <color name = "white">#FFFFFF</color>
+    <color name = "black">#000000</color>
+
+    <color name="kprogresshud_default_color">#b1000000</color>
+    <color name="kprogresshud_grey_color">#449E9E9E</color>
+
 </resources>

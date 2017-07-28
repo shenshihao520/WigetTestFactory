@@ -30,10 +30,24 @@
 
 
         <com.example.shenshihao520.wigettestfactory.widget.customView.DrawTaiJiView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:id="@+id/taiji"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
             android:padding="10dp"
             android:layout_marginLeft="10dp"
             />
+        <Button
+            android:background="@drawable/ripple_bg"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="哒哒哒哒"/>
 
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/ripple_bg"
+
+            android:text="13zsjflksjdflj"
+            />
 </LinearLayout>

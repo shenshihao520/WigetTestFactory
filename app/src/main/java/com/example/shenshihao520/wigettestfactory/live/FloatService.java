@@ -18,11 +18,13 @@ import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.CameraDevice;
 import android.hardware.camera2.CameraManager;
 import android.hardware.camera2.CaptureRequest;
+import android.hardware.display.VirtualDisplay;
 import android.media.CamcorderProfile;
 import android.media.Image;
 import android.media.ImageReader;
 import android.media.MediaRecorder;
 import android.os.Build;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.IBinder;
@@ -44,9 +46,12 @@ import android.widget.Toast;
 
 import com.example.shenshihao520.wigettestfactory.R;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 
 /**
  * Created by shenshihao520 on 2017/7/26.
@@ -304,11 +309,6 @@ public class FloatService extends Service {
 
         myHolder = sv_media_surface.getHolder();
         myHolder.addCallback(new MyCallback());
-//        myHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
-
-//        Surface surface = sv_media_surface.getHolder().getSurface();
-
-
     }
 
     public void stop() {
@@ -335,38 +335,38 @@ public class FloatService extends Service {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    initCamera2();
-//                    try {
-//                        mediaRecorder = new MediaRecorder();
-//
-//                        c = Camera.open(Camera.CameraInfo.CAMERA_FACING_FRONT);
-//                        Camera.Parameters parameters = c.getParameters();
-//                        c.setDisplayOrientation(90);
-//                        c.setParameters(parameters);
-//                        c.unlock();
+                    try {
+                        mediaRecorder = new MediaRecorder();
+
+                        c = Camera.open(Camera.CameraInfo.CAMERA_FACING_FRONT);
+                        Camera.Parameters parameters = c.getParameters();
+                        c.setDisplayOrientation(90);
+                        c.setParameters(parameters);
+                        c.unlock();
 //                        initCamera2();
+                        mediaRecorder.setPreviewDisplay(myHolder.getSurface());
+
+                        mediaRecorder.getSurface();
+                        mediaRecorder.setOrientationHint(180);
+                        mediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
+                        mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+                        mediaRecorder.setProfile(CamcorderProfile.get(CamcorderProfile.QUALITY_QVGA));
+
+                        //设置格式
+//        mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
 //
-//                        mediaRecorder.getSurface();
-//                        mediaRecorder.setOrientationHint(180);
-//                        mediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
-//                        mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-//                        mediaRecorder.setProfile(CamcorderProfile.get(CamcorderProfile.QUALITY_QVGA));
-//
-//                        //设置格式
-////        mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
-////
-////        mediaRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.H263);
-////        mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
-//
-//                        //设置保存路径
-//                        mediaRecorder.setOutputFile("/mnt/sdcard/XinFu/录像" + System.currentTimeMillis() + ".mp4");
-//                        mediaRecorder.setPreviewDisplay(myHolder.getSurface());
-//
-//                        mediaRecorder.prepare();
-//                        mediaRecorder.start();
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
+//        mediaRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.H263);
+//        mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+
+                        //设置保存路径
+                        mediaRecorder.setOutputFile("/sdcard/sForm／" + System.currentTimeMillis() + ".mp4");
+
+
+                        mediaRecorder.prepare();
+                        mediaRecorder.start();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }).start();
 
@@ -377,109 +377,76 @@ public class FloatService extends Service {
             // and here you need to stop it
         }
     }
-
-    private void initCamera2() {
-        HandlerThread handlerThread = new HandlerThread("Camera2");
-        handlerThread.start();
-        childHandler = new Handler(handlerThread.getLooper());
-        mainHandler = new Handler(getMainLooper());
-        mCameraID = "" + CameraCharacteristics.LENS_FACING_FRONT;//后摄像头
-        mImageReader = ImageReader.newInstance(1080, 1920, ImageFormat.JPEG, 1);
-        mImageReader.setOnImageAvailableListener(new ImageReader.OnImageAvailableListener() { //可以在这里处理拍照得到的临时照片 例如，写入本地
-            @Override
-            public void onImageAvailable(ImageReader reader) {
-                mCameraDevice.close();
-//                mSurfaceView.setVisibility(View.GONE);
-//                iv_show.setVisibility(View.VISIBLE);
-//                // 拿到拍照照片数据
-//                Image image = reader.acquireNextImage();
-//                ByteBuffer buffer = image.getPlanes()[0].getBuffer();
-//                byte[] bytes = new byte[buffer.remaining()];
-//                buffer.get(bytes);//由缓冲区存入字节数组
-//                final Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-//                if (bitmap != null) {
-//                    iv_show.setImageBitmap(bitmap);
-//                }
-            }
-        }, mainHandler);
-        //获取摄像头管理
-        mCameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
+    private void prepareRecording() {
         try {
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                return;
-            }
-            //打开摄像头
-            mCameraManager.openCamera(mCameraID, stateCallback, mainHandler);
-        } catch (CameraAccessException e) {
+            mediaRecorder.prepare();
+        } catch (Exception e) {
             e.printStackTrace();
+            return;
         }
+
+        final String directory = Environment.getExternalStorageDirectory() + File.separator + "Recordings";
+        if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+            Toast.makeText(this, "Failed to get External Storage", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        final File folder = new File(directory);
+        boolean success = true;
+        if (!folder.exists()) {
+            success = folder.mkdir();
+        }
+        String filePath;
+        if (success) {
+            String videoName = ("capture_" + getCurSysDate() + ".mp4");
+            filePath = directory + File.separator + videoName;
+        } else {
+            Toast.makeText(this, "Failed to create Recordings directory", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+//        int width = mDisplayMetrics.widthPixels;
+//        int height = mDisplayMetrics.heightPixels;
+
+        mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+        mediaRecorder.setVideoSource(MediaRecorder.VideoSource.SURFACE);
+        mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
+        mediaRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.H264);
+        mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+        mediaRecorder.setVideoEncodingBitRate(512 * 1000);
+        mediaRecorder.setVideoFrameRate(30);
+//        mediaRecorder.setVideoSize(width, height);
+        mediaRecorder.setOutputFile(filePath);
     }
-
-
-    /**
-     * 摄像头创建监听
-     */
-    private CameraDevice.StateCallback stateCallback = new CameraDevice.StateCallback() {
-        @Override
-        public void onOpened(CameraDevice camera) {//打开摄像头
-            mCameraDevice = camera;
-            //开启预览
-            takePreview();
-        }
-
-        @Override
-        public void onDisconnected(CameraDevice camera) {//关闭摄像头
-//            if (null != mCameraDevice) {
-//                mCameraDevice.close();
-//                Camera2Activity.this.mCameraDevice = null;
-//            }
-        }
-
-        @Override
-        public void onError(CameraDevice camera, int error) {//发生错误
-            Toast.makeText(FloatService.this, "摄像头开启失败", Toast.LENGTH_SHORT).show();
-        }
-    };
-    /**
-     * 开始预览
-     */
-    private void takePreview() {
-        try {
-            // 创建预览需要的CaptureRequest.Builder
-            final CaptureRequest.Builder previewRequestBuilder = mCameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW);
-            // 将SurfaceView的surface作为CaptureRequest.Builder的目标
-            previewRequestBuilder.addTarget(myHolder.getSurface());
-            // 创建CameraCaptureSession，该对象负责管理处理预览请求和拍照请求
-            mCameraDevice.createCaptureSession(Arrays.asList(myHolder.getSurface(), mImageReader.getSurface()), new CameraCaptureSession.StateCallback() // ③
-            {
-                @Override
-                public void onConfigured(CameraCaptureSession cameraCaptureSession) {
-                    if (null == mCameraDevice) return;
-                    // 当摄像头已经准备好时，开始显示预览
-                    mCameraCaptureSession = cameraCaptureSession;
-                    try {
-                        // 自动对焦
-                        previewRequestBuilder.set(CaptureRequest.CONTROL_AF_MODE, CaptureRequest.CONTROL_AF_MODE_CONTINUOUS_PICTURE);
-                        // 打开闪光灯
-                        previewRequestBuilder.set(CaptureRequest.CONTROL_AE_MODE, CaptureRequest.CONTROL_AE_MODE_ON_AUTO_FLASH);
-                        // 显示预览
-                        CaptureRequest previewRequest = previewRequestBuilder.build();
-                        mCameraCaptureSession.setRepeatingRequest(previewRequest, null, childHandler);
-                    } catch (CameraAccessException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-                @Override
-                public void onConfigureFailed(CameraCaptureSession cameraCaptureSession) {
-                    Toast.makeText(FloatService.this, "配置失败", Toast.LENGTH_SHORT).show();
-                }
-            }, childHandler);
-        } catch (CameraAccessException e) {
-            e.printStackTrace();
-        }
+    public String getCurSysDate() {
+        return new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(new Date());
     }
-
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+////        if (requestCode != CAST_PERMISSION_CODE) {
+////            // Where did we get this request from ? -_-
+//////            Log.w(TAG, "Unknown request code: " + requestCode);
+////            return;
+////        }
+////        if (resultCode != RESULT_OK) {
+////            Toast.makeText(this, "Screen Cast Permission Denied :(", Toast.LENGTH_SHORT).show();
+////            return;
+////        }
+//        mMediaProjection = mProjectionManager.getMediaProjection(resultCode, data);
+//        // mMediaProjection.registerCallback(callback, null);
+//        mVirtualDisplay = getVirtualDisplay();
+//        mMediaRecorder.start();
+//    }
+//
+//    private VirtualDisplay getVirtualDisplay() {
+//        screenDensity = mDisplayMetrics.densityDpi;
+//        int width = mDisplayMetrics.widthPixels;
+//        int height = mDisplayMetrics.heightPixels;
+//
+//        return mMediaProjection.createVirtualDisplay(this.getClass().getSimpleName(),
+//                width, height, screenDensity,
+//                DisplayManager.VIRTUAL_DISPLAY_FLAG_AUTO_MIRROR,
+//                mMediaRecorder.getSurface(), null /*Callbacks*/, null /*Handler*/);
+//    }
 
 
 }

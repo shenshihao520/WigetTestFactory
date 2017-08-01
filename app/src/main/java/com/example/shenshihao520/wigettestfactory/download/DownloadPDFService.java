@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Binder;
 import android.os.IBinder;
 import android.support.annotation.IntDef;
 import android.support.annotation.Nullable;
@@ -20,14 +21,17 @@ import java.io.File;
  * Created by shenshihao520 on 2017/7/27.
  */
 
-public class DownloadPDFService extends Service{
+public class DownloadPDFService extends Service implements DownloadPDFCallback{
     static DownloadManager downloadManager;
     Context mContext;
     static Long mTaskId;
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-        return null;
+        IBinder result = null;
+        if ( null == result )
+            result = new ServiceBinder() ;
+        return result;
     }
 
     @Override
@@ -109,6 +113,13 @@ public class DownloadPDFService extends Service{
             }
         }
     }
+
+    @Override
+    public void getPDFStatus() {
+        Log.i("shen",">>>下载失败11");
+    }
+
+    //下载查看状态广播
     public static class DownloadBroadcastReceiver extends  BroadcastReceiver{
 
         @Override
@@ -117,6 +128,11 @@ public class DownloadPDFService extends Service{
         }
     }
 
+    public class ServiceBinder extends Binder {
 
+        public DownloadPDFService getService() {
+            return DownloadPDFService.this;
+        }
+    }
 
 }

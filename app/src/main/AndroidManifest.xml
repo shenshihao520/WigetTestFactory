@@ -47,8 +47,10 @@
             </intent-filter>
         </activity>
     <service android:name=".live.WindowService"></service>
-    <service android:name=".live.FloatService"></service>
-    <service android:name=".download.DownloadPDFService"></service>
+    <service android:name=".live.ServiceDemo"></service>
+        <service android:name=".live.FloatService"></service>
+
+        <service android:name=".download.DownloadPDFService"></service>
         <receiver
             android:name=".download.DownloadPDFService$DownloadBroadcastReceiver"
             android:enabled="true"

@@ -1,6 +1,7 @@
 package com.example.shenshihao520.wigettestfactory.utils;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -15,6 +16,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Environment;
 import android.os.Handler;
+import android.util.Log;
 
 import org.apache.http.params.CoreConnectionPNames;
 
@@ -931,4 +933,58 @@ public class CommonUtils {
 		return resizedBitmap;
 	}
 
+
+	/**
+	 * 规则3：必须同时包含大小写字母及数字
+	 * 是否包含
+	 *
+	 * @param str
+	 * @return
+	 */
+	public static boolean isContainAll(String str) {
+		boolean isDigit = false;//定义一个boolean值，用来表示是否包含数字
+		boolean isLowerCase = false;//定义一个boolean值，用来表示是否包含字母
+		boolean isUpperCase = false;
+		for (int i = 0; i < str.length(); i++) {
+			if (Character.isDigit(str.charAt(i))) {   //用char包装类中的判断数字的方法判断每一个字符
+				isDigit = true;
+			} else if (Character.isLowerCase(str.charAt(i))) {  //用char包装类中的判断字母的方法判断每一个字符
+				isLowerCase = true;
+			} else if (Character.isUpperCase(str.charAt(i))) {
+				isUpperCase = true;
+			}
+		}
+		String regex = "^[a-zA-Z0-9]+$";
+		boolean isRight = isDigit && isLowerCase && isUpperCase && str.matches(regex);
+		return isRight;
+	}
+	/**
+	 * 用来判断服务是否运行.
+	 *
+	 * @param context
+	 * @param className
+	 *            判断的服务名字
+	 * @return true 在运行 false 不在运行
+	 */
+	public static boolean isServiceRunning(Context mContext, String className) {
+
+		boolean isRunning = false;
+		ActivityManager activityManager = (ActivityManager) mContext
+				.getSystemService(Context.ACTIVITY_SERVICE);
+		List<ActivityManager.RunningServiceInfo> serviceList = activityManager
+				.getRunningServices(30);
+
+		if (!(serviceList.size() > 0)) {
+			return false;
+		}
+		Log.e("OnlineService：",className);
+		for (int i = 0; i < serviceList.size(); i++) {
+			Log.e("serviceName：",serviceList.get(i).service.getClassName());
+			if (serviceList.get(i).service.getClassName().contains(className) == true) {
+				isRunning = true;
+				break;
+			}
+		}
+		return isRunning;
+	}
 }

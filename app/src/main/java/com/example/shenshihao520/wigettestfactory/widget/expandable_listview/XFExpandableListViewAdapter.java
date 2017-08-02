@@ -1,4 +1,4 @@
-package com.example.shenshihao520.wigettestfactory.adapter;
+package com.example.shenshihao520.wigettestfactory.widget.expandable_listview;
 
 import android.content.Context;
 import android.view.LayoutInflater;

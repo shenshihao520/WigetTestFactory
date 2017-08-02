@@ -1,4 +1,4 @@
-package com.example.shenshihao520.wigettestfactory.testActivity;
+package com.example.shenshihao520.wigettestfactory.widget.expandable_listview;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.example.shenshihao520.wigettestfactory.R;
 import com.example.shenshihao520.wigettestfactory.testData.InsurancePolicyChild;
 import com.example.shenshihao520.wigettestfactory.testData.InsurancePolicyGroup;
-import com.example.shenshihao520.wigettestfactory.adapter.XFExpandableListViewAdapter;
+import com.example.shenshihao520.wigettestfactory.widget.expandable_listview.XFExpandableListViewAdapter;
 import com.example.shenshihao520.wigettestfactory.widget.spiner.SpinerButton;
 
 import java.util.ArrayList;

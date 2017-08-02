@@ -74,21 +74,20 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.i("log", "点击了q！！！！");
                 showFloatingWindow();
-//                initScreen();
-//                initVideo();
+
             }
         });
     }
 
     private void showFloatingWindow() {
-//        FangFa();
-         service = new Intent(MainActivity.this, FloatService.class);
+        FangFa();
+//         service = new Intent(MainActivity.this, FloatService.class);
 //        if (mybinder != null&& !mybinder.isMiUI8) {
 //            mybinder.showFloatingWindow();
 //        Log.i("log","showFloatingWindow");
 //        } else {
 //            Log.i("log","11111111showFloatingWindow:"+mybinder);
-            startService(service);
+//            startService(service);
 //            bindService(service, serviceConnection, Service.BIND_AUTO_CREATE);
 //            if (mybinder!=null) {
 //                Log.i("log","2222222showFloatingWindow");

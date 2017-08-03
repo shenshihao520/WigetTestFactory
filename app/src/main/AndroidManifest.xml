@@ -39,7 +39,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".eventbus.SubscriberActivity">
+        <activity android:name=".java_class_test.parcelable_serializable.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -47,6 +47,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".eventbus.PublisherActivity"></activity>
+        <activity android:name=".java_class_test.parcelable_serializable.SecondActivity"></activity>
 
         <service android:name=".live.ServiceDemo"></service>
         <service android:name=".live.FloatService"></service>

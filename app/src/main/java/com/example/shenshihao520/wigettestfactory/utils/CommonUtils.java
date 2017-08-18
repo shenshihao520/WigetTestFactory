@@ -7,6 +7,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -17,6 +18,7 @@ import android.net.NetworkInfo;
 import android.os.Environment;
 import android.os.Handler;
 import android.util.Log;
+import android.view.View;
 
 import org.apache.http.params.CoreConnectionPNames;
 
@@ -841,6 +843,25 @@ public class CommonUtils {
 		illegalArgumentDialog.setMessage(message);
 		illegalArgumentDialog.show();
 	}
+	/**
+	 * 将指定图片转换成指定大小 一般用于缩小
+	 *	id 的方式
+
+	 * @return
+	 */
+	public static Bitmap convertToBitmap(Resources res, int id, int w, int h) {
+		BitmapFactory.Options opts = new BitmapFactory.Options();
+		// 设置为ture只获取图片大小
+		opts.inJustDecodeBounds = true;
+		opts.inPreferredConfig = Bitmap.Config.RGB_565;
+		BitmapFactory.decodeResource(res,id, opts);
+		opts.inSampleSize = calculateInSampleSize(opts, w, h); // 调用上面定义的方法计算inSampleSize值
+
+		opts.inJustDecodeBounds = false;
+		Bitmap bitmap = BitmapFactory.decodeResource(res,id, opts);
+
+		return bitmap;
+	}
 
 
 	/**
@@ -961,7 +982,7 @@ public class CommonUtils {
 	/**
 	 * 用来判断服务是否运行.
 	 *
-	 * @param context
+	 * @param mContext
 	 * @param className
 	 *            判断的服务名字
 	 * @return true 在运行 false 不在运行
@@ -986,5 +1007,32 @@ public class CommonUtils {
 			}
 		}
 		return isRunning;
+	}
+
+	/**
+	 * 截屏
+	 * @param dView dView要截取的View
+	 * @param path  保存图片的路径
+	 */
+	public static void screenshot(View dView,String path) {
+		// 获取屏幕
+		dView.setDrawingCacheEnabled(true);
+		dView.buildDrawingCache();
+		Bitmap bmp = dView.getDrawingCache();
+		if (bmp != null) {
+			try {
+				Log.i("666666",path);
+
+				// 图片文件路径
+				String filePath = path;
+
+				File file = new File(filePath);
+				FileOutputStream os = new FileOutputStream(file);
+				bmp.compress(Bitmap.CompressFormat.PNG, 100, os);
+				os.flush();
+				os.close();
+			} catch (Exception e) {
+			}
+		}
 	}
 }

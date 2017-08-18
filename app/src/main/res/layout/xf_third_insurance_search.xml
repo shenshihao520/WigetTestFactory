@@ -46,7 +46,7 @@
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
 
-                >
+                android:layout_height="wrap_content">
 
                 <TextView
                     android:id="@+id/insurance_policy_num_Title"
@@ -75,7 +75,7 @@
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
 
-                >
+                android:layout_height="wrap_content">
 
                 <TextView
                     android:id="@+id/ipolicy_holder_name_Title"
@@ -105,7 +105,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <widget.SpinerButton
+            <com.example.shenshihao520.wigettestfactory.widget.spiner.SpinerButton
                 android:id="@+id/ipolicy_status"
                 style="@style/XF_Third_BubleBackground"
                 android:layout_width="0dp"
@@ -115,16 +115,18 @@
                 shen:spiner_item_layout="@layout/spiner_item_layout"
                 shen:spiner_window_layout="@layout/spiner_window_layout"
                 shen:value_text_color="@color/xf_third_light_black"
-                shen:value_text_title="@string/ipolicy_status" />
+                shen:value_text_title="@string/ipolicy_status"
+                android:layout_height="wrap_content" />
 
-            <widget.SpinerButton
+            <com.example.shenshihao520.wigettestfactory.widget.spiner.SpinerButton
                 android:id="@+id/ipolicy_receipt_status"
                 style="@style/XF_Third_BubleBackground"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 shen:spiner_button_layout="@layout/spiner_button_layout"
                 shen:value_text_color="@color/xf_third_light_black"
-                shen:value_text_title="@string/receipt_status" />
+                shen:value_text_title="@string/receipt_status"
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
@@ -139,7 +141,8 @@
                 android:layout_width="0dp"
                 android:layout_marginRight="25.3dp"
                 android:layout_weight="1"
-                android:paddingLeft="16dp">
+                android:paddingLeft="16dp"
+                android:layout_height="wrap_content">
 
                 <TextView
                     android:id="@+id/ipolicy_apply_date_from_Title"
@@ -179,7 +182,8 @@
                 android:layout_marginLeft="25.3dp"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:paddingLeft="16dp">
+                android:paddingLeft="16dp"
+                android:layout_height="wrap_content">
 
                 <TextView
                     android:id="@+id/ipolicy_apply_date_end_Title"
@@ -216,7 +220,8 @@
                 android:layout_width="0dp"
                 android:layout_marginRight="25.3dp"
                 android:layout_weight="1"
-                android:paddingLeft="16dp">
+                android:paddingLeft="16dp"
+                android:layout_height="wrap_content">
 
                 <TextView
                     android:id="@+id/ipolicy_effect_date_from_Title"
@@ -256,7 +261,8 @@
                 android:layout_marginLeft="25.3dp"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:paddingLeft="16dp">
+                android:paddingLeft="16dp"
+                android:layout_height="wrap_content">
 
                 <TextView
                     android:id="@+id/ipolicy_effect_date_end_Title"
@@ -293,7 +299,8 @@
                 android:layout_width="0dp"
                 android:layout_marginRight="25.3dp"
                 android:layout_weight="1"
-                android:paddingLeft="16dp">
+                android:paddingLeft="16dp"
+                android:layout_height="wrap_content">
 
                 <TextView
                     android:id="@+id/ipolicy_receipt_date_from_Title"
@@ -333,7 +340,8 @@
                 android:layout_marginLeft="25.3dp"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:paddingLeft="16dp">
+                android:paddingLeft="16dp"
+                android:layout_height="wrap_content">
 
                 <TextView
                     android:id="@+id/ipolicy_receipt_date_end_Title"
@@ -359,7 +367,8 @@
             </RelativeLayout>
         </LinearLayout>
 
-        <TextView
+        <Button
+            android:id="@+id/screenshot"
             style="@style/XF_Third_MainText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

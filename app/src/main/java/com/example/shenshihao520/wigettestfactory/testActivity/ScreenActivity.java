@@ -10,6 +10,8 @@ import android.util.Log;
 import com.example.shenshihao520.wigettestfactory.R;
 
 /**
+ * 屏幕适配测试
+ *
  * Created by shenshihao520 on 2017/8/11.
  */
 

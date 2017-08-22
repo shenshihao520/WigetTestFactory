@@ -34,6 +34,7 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 
 /**
+ * 两种截图的实现
  * Created by shenshihao520 on 2017/8/17.
  */
 

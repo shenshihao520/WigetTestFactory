@@ -1,5 +1,6 @@
 package com.example.shenshihao520.wigettestfactory.java_class_test.loader;
 
+import android.app.ApplicationErrorReport;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.LoaderManager;
@@ -30,6 +31,7 @@ public class LoaderActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loader);
         initView();
+
         initData();
     }
 

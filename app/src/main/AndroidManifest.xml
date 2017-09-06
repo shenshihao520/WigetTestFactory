@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.shenshihao520.wigettestfactory">
+
     <!-- 打开照相机的权限 -->
     <uses-permission android:name="android.permission.CAMERA" />
     <!-- 创建文件的权限 -->
@@ -29,7 +30,6 @@
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.GET_TASKS" />
-
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -39,30 +39,51 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".java_class_test.hugo_aop.AspectJActivity">
+        <activity android:name=".java_class_test.screen_control.BannerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".eventbus.PublisherActivity"></activity>
-        <activity android:name=".java_class_test.parcelable_serializable.SecondActivity"></activity>
+        <activity android:name=".eventbus.PublisherActivity" />
+        <activity android:name=".java_class_test.parcelable_serializable.SecondActivity" />
 
-        <service android:name=".live.ServiceDemo"></service>
-        <service android:name=".live.FloatService"></service>
+        <service android:name=".live.ServiceDemo" />
+        <service android:name=".live.FloatService" />
+        <service android:name=".download.DownloadPDFService" />
+        <service android:name=".java_class_test.screen_control.ScreenService" />
 
-        <service android:name=".download.DownloadPDFService"></service>
         <receiver
             android:name=".download.DownloadPDFService$DownloadBroadcastReceiver"
             android:enabled="true"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.CheckDownloadStatus" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
-</application>
+        <receiver android:name=".widget.little_widget.TestWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/test_widget_info" />
+        </receiver>
+        <receiver android:name=".java_class_test.screen_control.BroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.SCREEN_OFF" />
+                <action android:name="android.intent.action.SCREEN_ON" />
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+                <action android:name="android.intent.action.ACTION_SHUTDOWN" />
+            </intent-filter>
+        </receiver>
+
+
+    </application>
 
 </manifest>

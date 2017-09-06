@@ -134,7 +134,6 @@
     <string name="payWay">缴费方式</string>
 
 
-
     <string name="dlt_tishi">保单号：</string>
     <string name="dlt_tishi1">温馨提示：</string>
     <string name="dlt_tishi2">如果当前无可扫描的投保单条形码可点击跳转按钮直</string>
@@ -142,4 +141,7 @@
     <string name="dlt_tishi4">中科软科技股份有限公司</string>
     <string name="dlt_tishi5">缓存建议网络不好时开启</string>
     <string name="dlt_tishi6">采集中</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="title_activity_test">TestActivity</string>
 </resources>

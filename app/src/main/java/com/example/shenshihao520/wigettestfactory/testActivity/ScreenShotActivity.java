@@ -5,7 +5,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.PixelFormat;
+import android.hardware.Camera;
 import android.hardware.display.DisplayManager;
 import android.hardware.display.VirtualDisplay;
 import android.media.Image;
@@ -19,19 +21,23 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.shenshihao520.wigettestfactory.R;
 import com.example.shenshihao520.wigettestfactory.utils.CommonUtils;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.util.UUID;
 
 /**
  * 两种截图的实现
@@ -41,6 +47,7 @@ import java.nio.ByteBuffer;
 public class ScreenShotActivity extends Activity{
     Button screenshot;
     String sdCardPath;
+    private Camera myCamera;// 相机实例
 
 
     public static final int REQUEST_MEDIA_PROJECTION = 1000;
@@ -49,18 +56,31 @@ public class ScreenShotActivity extends Activity{
 
     private int mScreenWidth,mScreenHeight,mScreenDensity;
 
-    private MediaProjection mMediaProjection;
+    private MediaProjection mMediaProjection;  //系统级的服务
 
-    private VirtualDisplay mVirtualDisplay;
+    private VirtualDisplay mVirtualDisplay;     //虚拟展现类
+
+    SurfaceView surfaceView;
     Intent mResultData;
+    Button btn_initCamera;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.screenshot);
         screenshot = (Button)findViewById(R.id.screenshot);
+
+        surfaceView = (SurfaceView)findViewById(R.id.surfaceview_recordvideo_bendi) ;
         // 获取内置SD卡路径
         sdCardPath = Environment.getExternalStorageDirectory() + "/system/screenshot1.png";
-        requestCapturePermission(ScreenShotActivity.this);
+//        requestCapturePermission(ScreenShotActivity.this);
+        btn_initCamera = (Button)findViewById(R.id.initCamera) ;
+        btn_initCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initCamera(ScreenShotActivity.this,surfaceView);
+                myCamera.startPreview();
+            }
+        });
         screenshot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,14 +88,15 @@ public class ScreenShotActivity extends Activity{
 //                screenshot11(sdCardPath);
 
 
-                startScreenShot();
+//                startScreenShot();
+                myCamera.takePicture(null, null, pictureCallback);
 
             }
         });
     }
 
     /**
-     * view的方法
+     * 1.view的方法
      * @param path
      */
      void screenshot11(String path) {
@@ -100,44 +121,8 @@ public class ScreenShotActivity extends Activity{
             }
         }
     }
-
-
-
-
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public void requestCapturePermission(Activity activity) {
-
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-            //5.0 之后才允许使用屏幕截图
-
-            return;
-        }
-
-        MediaProjectionManager mediaProjectionManager = (MediaProjectionManager) activity.getSystemService(Context.MEDIA_PROJECTION_SERVICE);
-        activity.startActivityForResult(
-                mediaProjectionManager.createScreenCaptureIntent(),
-                REQUEST_MEDIA_PROJECTION);
-    }
     /**
-     * 创建ImageReader实例
-     */
-    public void createImageReader(Intent data) {
-
-        mResultData = data;
-        if(mImageReader == null)
-        {
-            DisplayMetrics metric = new DisplayMetrics();
-            this.getWindowManager().getDefaultDisplay().getMetrics(metric);
-            mScreenWidth = metric.widthPixels;  // 屏幕宽度（像素）
-            mScreenHeight = metric.heightPixels;  // 屏幕高度（像素）
-            mScreenDensity  = metric.densityDpi;  // 屏幕密度（0.75 / 1.0 / 1.5）
-
-            mImageReader = ImageReader.newInstance(mScreenWidth, mScreenHeight, PixelFormat.RGBA_8888, 2);
-        }
-    }
-
-    /**
-     * 点击事件中触发截屏
+     * 2.点击事件中触发截屏 使用系统方法的方法
      */
     private void startScreenShot() {
 
@@ -158,6 +143,46 @@ public class ScreenShotActivity extends Activity{
             }
         }, 30);
     }
+
+
+    /**
+     * 获取系统截屏权限
+     * @param activity
+     */
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public void requestCapturePermission(Activity activity) {
+
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            //5.0 之后才允许使用屏幕截图
+
+            return;
+        }
+
+        MediaProjectionManager mediaProjectionManager = (MediaProjectionManager) activity.getSystemService(Context.MEDIA_PROJECTION_SERVICE);
+        activity.startActivityForResult(
+                mediaProjectionManager.createScreenCaptureIntent(),
+                REQUEST_MEDIA_PROJECTION);
+    }
+
+
+    /**
+     * 创建ImageReader实例
+     */
+    public void createImageReader(Intent data) {
+
+        mResultData = data;
+        if(mImageReader == null)
+        {
+            DisplayMetrics metric = new DisplayMetrics();
+            this.getWindowManager().getDefaultDisplay().getMetrics(metric);
+            mScreenWidth = metric.widthPixels;  // 屏幕宽度（像素）
+            mScreenHeight = metric.heightPixels;  // 屏幕高度（像素）
+            mScreenDensity  = metric.densityDpi;  // 屏幕密度（0.75 / 1.0 / 1.5）
+
+            mImageReader = ImageReader.newInstance(mScreenWidth, mScreenHeight, PixelFormat.RGBA_8888, 2);
+        }
+    }
+
 
 
     public void startVirtual() {
@@ -284,10 +309,88 @@ public class ScreenShotActivity extends Activity{
                 if (resultCode == RESULT_OK && data != null) {
 //                    FloatWindowsService.setResultData(data);
 //                    startService(new Intent(getApplicationContext(), FloatWindowsService.class));
-                    createImageReader(data);    //创建ImageReader实例
+                    createImageReader(data);    //创建ImageReader实例   获取完权限后裔才能在这里拿到ImageReader实例
                 }
 
                 break;
         }
     }
+
+
+
+
+
+    /**
+     * 3. 通过调用摄像头进行拍照截屏  可选择配合surfaceView
+     * 初始化Camera设置   这东西需要一个surfaceView
+     */
+    public void initCamera(Activity activity, SurfaceView surfaceView) {
+        if (myCamera == null ) {
+            myCamera = Camera.open(Camera.CameraInfo.CAMERA_FACING_FRONT);
+        }
+        int LARGEST_WIDTH = activity.getWindowManager().getDefaultDisplay().getWidth();
+        int LARGEST_HEIGHT = activity.getWindowManager().getDefaultDisplay().getHeight();
+
+        try {
+            Camera.Parameters myParameters = myCamera.getParameters();
+
+            surfaceView.setLayoutParams(new LinearLayout.LayoutParams(LARGEST_WIDTH, LARGEST_HEIGHT));
+            myCamera.setDisplayOrientation(90);
+            myCamera.setParameters(myParameters);
+            myCamera.setPreviewDisplay(surfaceView.getHolder());
+            myCamera.startPreview();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    } /**
+     * 截屏后的最主要的返回
+     */
+    private Camera.PictureCallback pictureCallback = new Camera.PictureCallback() {
+
+                @Override
+                public void onPictureTaken(final byte[] data, final Camera camera) {
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            UUID uuid = UUID.randomUUID();
+                            Bitmap bmp = BitmapFactory.decodeByteArray(data, 0, data.length);
+                            String fileName = uuid + ".jpg";
+                            String filePath = Environment.getExternalStorageDirectory()
+                                    .toString()
+                                    + File.separator
+                                    + fileName;
+                            save(bmp, filePath);
+                            int degree = CommonUtils.readPictureDegree(filePath);
+
+
+                        }
+                    }).start();
+                }
+            };
+    /**
+     * 照片保存
+     */
+    private void save(Bitmap bitmap, String filePath) {
+        File file = new File(filePath);
+        if (!file.getParentFile().exists()) {
+            file.getParentFile().mkdirs(); // 创建文件夹
+        }
+        try {
+            BufferedOutputStream bos = new BufferedOutputStream(
+                    new FileOutputStream(file));
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
+            bos.flush();
+            bos.close();
+            int degree = CommonUtils.readPictureDegree(filePath);
+            Bitmap bitmapRotaing = BitmapFactory.decodeFile(filePath);
+            bitmapRotaing = CommonUtils.rotaingImageView(degree, bitmapRotaing);
+            bos = new BufferedOutputStream(
+                    new FileOutputStream(file));
+            bitmapRotaing.compress(Bitmap.CompressFormat.JPEG, 100, bos);
+            bos.flush();
+            bos.close();
+        } catch (Exception e) {
+        }
+    }
+
 }

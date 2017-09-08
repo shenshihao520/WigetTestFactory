@@ -39,7 +39,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".java_class_test.screen_control.BannerActivity">
+        <activity android:name=".java_class_test.wifi_control.BannerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -37,6 +37,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.PushbackInputStream;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -1155,5 +1157,34 @@ public class CommonUtils {
         long blockSize = stat.getBlockSize();
         long availableBlocks = stat.getAvailableBlocks();
         return Formatter.formatFileSize(context, blockSize * availableBlocks);
+    }
+
+    /**
+     * 快速复制单个文件
+     *
+     * @return boolean
+     */
+    public static void copyFile(File f1,File f2) throws Exception{
+        int length=2097152;
+        FileInputStream in=new FileInputStream(f1);
+        FileOutputStream out=new FileOutputStream(f2);
+        FileChannel inC=in.getChannel();
+        FileChannel outC=out.getChannel();
+        ByteBuffer b=null;
+        while(true){
+            if(inC.position()==inC.size()){
+                inC.close();
+                outC.close();
+            }
+            if((inC.size()-inC.position())<length){
+                length=(int)(inC.size()-inC.position());
+            }else
+                length=2097152;
+            b=ByteBuffer.allocateDirect(length);
+            inC.read(b);
+            b.flip();
+            outC.write(b);
+            outC.force(false);
+        }
     }
 }

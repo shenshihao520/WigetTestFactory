@@ -4,8 +4,6 @@ package com.example.shenshihao520.wigettestfactory.java_class_test.proxy_dynamic
  * Created by shenshihao520 on 2017/8/28.
  */
 
-import com.example.shenshihao520.wigettestfactory.java_class_test.proxy_static.Agent;
-import com.example.shenshihao520.wigettestfactory.java_class_test.proxy_static.Star;
 
 /**
  * 外界环境，一般都是通过经纪人来接触明星

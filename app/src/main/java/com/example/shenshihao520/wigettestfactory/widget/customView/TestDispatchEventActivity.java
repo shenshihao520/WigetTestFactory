@@ -8,7 +8,6 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.example.shenshihao520.wigettestfactory.R;
-import com.example.shenshihao520.wigettestfactory.widget.test.TestDispatchEvent;
 
 /**
  * 事件分发测试Activity

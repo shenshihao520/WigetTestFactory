@@ -1,4 +1,4 @@
-package com.example.shenshihao520.wigettestfactory.widget.test;
+package com.example.shenshihao520.wigettestfactory.widget.customView;
 
 import android.content.Context;
 import android.support.annotation.Nullable;

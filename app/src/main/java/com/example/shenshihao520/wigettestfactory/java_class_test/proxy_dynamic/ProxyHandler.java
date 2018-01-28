@@ -21,9 +21,10 @@ public class ProxyHandler implements InvocationHandler {
 
     /**
      * 方法拦截，可以进行一些额外操作
+     *
      * @param proxy
      * @param method 拦截的方法
-     * @param args 方法对应的参数
+     * @param args   方法对应的参数
      * @return
      * @throws Throwable
      */
@@ -43,6 +44,7 @@ public class ProxyHandler implements InvocationHandler {
 
     /**
      * 获取代理
+     *
      * @return
      */
     public Object getProxy() {

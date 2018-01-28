@@ -1,5 +1,6 @@
 package com.example.shenshihao520.wigettestfactory.utils;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.AlertDialog;
@@ -7,6 +8,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -15,12 +17,16 @@ import android.graphics.Matrix;
 import android.media.ExifInterface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.StatFs;
+import android.support.v4.app.ActivityCompat;
 import android.telephony.TelephonyManager;
 import android.text.format.Formatter;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
 
 import org.apache.http.params.CoreConnectionPNames;
@@ -37,6 +43,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.PushbackInputStream;
+import java.lang.reflect.Method;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.util.ArrayList;
@@ -1048,13 +1055,10 @@ public class CommonUtils {
         } else {
             // 获取NetworkInfo对象
             NetworkInfo networkINfo = connectivityManager.getActiveNetworkInfo();
-            if (networkINfo != null && networkINfo.getState() ==  NetworkInfo.State.CONNECTED) {
-                if(networkINfo.getType() == ConnectivityManager.TYPE_WIFI)
-                {
+            if (networkINfo != null && networkINfo.getState() == NetworkInfo.State.CONNECTED) {
+                if (networkINfo.getType() == ConnectivityManager.TYPE_WIFI) {
                     return 1;
-                }
-                else
-                {
+                } else {
                     return 2;
                 }
 
@@ -1075,7 +1079,7 @@ public class CommonUtils {
     /**
      * 获取当前系统上的语言列表(Locale列表)
      *
-     * @return  语言列表
+     * @return 语言列表
      */
     public static Locale[] getSystemLanguageList() {
         return Locale.getAvailableLocales();
@@ -1084,7 +1088,7 @@ public class CommonUtils {
     /**
      * 获取当前手机系统版本号
      *
-     * @return  系统版本号
+     * @return 系统版本号
      */
     public static String getSystemVersion() {
         return android.os.Build.VERSION.RELEASE;
@@ -1093,7 +1097,7 @@ public class CommonUtils {
     /**
      * 获取手机型号
      *
-     * @return  手机型号
+     * @return 手机型号
      */
     public static String getSystemModel() {
         return android.os.Build.MODEL;
@@ -1102,7 +1106,7 @@ public class CommonUtils {
     /**
      * 获取手机厂商
      *
-     * @return  手机厂商
+     * @return 手机厂商
      */
     public static String getDeviceBrand() {
         return android.os.Build.BRAND;
@@ -1111,11 +1115,21 @@ public class CommonUtils {
     /**
      * 获取手机IMEI(需要“android.permission.READ_PHONE_STATE”权限)
      *
-     * @return  手机IMEI
+     * @return 手机IMEI
      */
     public static String getIMEI(Context ctx) {
         TelephonyManager tm = (TelephonyManager) ctx.getSystemService(Activity.TELEPHONY_SERVICE);
         if (tm != null) {
+            if (ActivityCompat.checkSelfPermission(ctx, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return "";
+            }
             return tm.getDeviceId();
         }
         return null;
@@ -1171,7 +1185,7 @@ public class CommonUtils {
         FileChannel inC=in.getChannel();
         FileChannel outC=out.getChannel();
         ByteBuffer b=null;
-        while(true){
+        while(true){ //这是个节省内存的操作  根据文件大小进行 buffer的分配   最大是 2M 缓存
             if(inC.position()==inC.size()){
                 inC.close();
                 outC.close();
@@ -1187,4 +1201,79 @@ public class CommonUtils {
             outC.force(false);
         }
     }
+    /**
+     * 将秒转化为 00:00:00形式
+     * @param time
+     * @return
+     */
+    public static String transTime(long time){
+        String timeStr = null;
+        long hour = 0;
+        long minute = 0;
+        long second = 0;
+        if (time <= 0)
+            return "00:00";
+        else {
+            minute = (int)time / 60;
+            if (minute < 60) {
+                second = time % 60;
+                timeStr = "00:"+unitFormat(minute) + ":" + unitFormat(second);
+            } else {
+                hour = minute / 60;
+                if (hour > 99)
+                    return "99:59:59";
+                minute = minute % 60;
+                second = time - hour * 3600 - minute * 60;
+                timeStr = unitFormat(hour) + ":" + unitFormat(minute) + ":" + unitFormat(second);
+            }
+        }
+        return timeStr;
+    }
+
+    /**
+     * 补零方法
+     * @param i
+     * @return
+     */
+    public static String unitFormat(long i) {
+        String retStr = null;
+        if (i >= 0 && i < 10)
+            retStr = "0" + Long.toString(i);
+        else
+            retStr = "" + i;
+        return retStr;
+    }
+
+    /**
+     * 获取屏幕宽高
+     */
+    private DisplayMetrics getScreenSize(Activity activity) {
+        DisplayMetrics dm = new DisplayMetrics();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+
+            activity.getWindowManager().getDefaultDisplay().getRealMetrics(dm);
+            // 屏幕宽
+            int mWidthPixels = dm.widthPixels;
+            // 屏幕高
+            int mHeightPixels = dm.heightPixels;
+        } else {
+
+            Display display = activity.getWindowManager().getDefaultDisplay();
+            @SuppressWarnings("rawtypes")
+            Class c;
+            try {
+                c = Class.forName("android.view.Display");
+                @SuppressWarnings("unchecked")
+                Method method = c.getMethod("getRealMetrics", DisplayMetrics.class);
+                method.invoke(display, dm);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            int mWidthPixels = dm.widthPixels;
+            int mHeightPixels = dm.heightPixels;
+        }
+        return dm;
+    }
+
 }
